@@ -1,6 +1,6 @@
 .greetings{   
-    font-size: 50px;
     text-align: center;
+    font-size: 20px;
 }
 
 .greetings img{
@@ -11,15 +11,7 @@
     margin-right: auto;
 }
 
-.experience{
-    font-size: 40px;
-}
-
-.obsessed{
-    font-size: 20px;
-}
-
-.projects{
+#flamethrower-video{
     display: none;
 }
 
