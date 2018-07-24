@@ -11,6 +11,15 @@
     margin-right: auto;
 }
 
+#flamethrower-link {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#flamethrower-link:hover{ 
+    opacity: .5;
+}
+
 #flamethrower-video{
     display: none;
 }
@@ -22,9 +31,8 @@
 }
 
 .resources{
-    display: none;
-    text-align: center;
-    font-size: 50px;
+    font-size: 30px;
+    margin-left: 25%;
 }
 
 .resources a{
