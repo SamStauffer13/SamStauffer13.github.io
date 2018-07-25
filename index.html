@@ -19,7 +19,7 @@
             text-align: center;
         }
 
-        /* DQ: can this belong to it's parent? */
+        /* todo: can this belong to it's parent? */
 
         .center-mass {
             position: relative;
@@ -58,57 +58,93 @@
             }
         }
 
-        /* example of paralax div */
-
-        #me {
-            background: url('me.png');
-
-            background-repeat: no-repeat;
-
-            background-size: auto;
-
-            background-position: center;
-
-            background-attachment: fixed;
-        }
-
         #links {
-            /* background-color: white */
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: left;
+            padding: 30px;
         }
 
         #links a {
             display: block;
+            padding: 15px;
+        }
+
+        /* todo, can any of this be rolled up */
+
+        .parallax-magic {
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        #me {
+            background: url('me.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: auto;
+        }
+
+        #r1 {
+            background: url('media/r-asgard.jpg');
+            background-size: cover;
+        }
+
+        #r2 {
+            background: url('media/r-cliffs-of-mohr.jpg');
+            background-size: cover;
+            background-position: center center;
+        }
+
+        #r3 {
+            background: url('media/r-valley-of-fire.jpg');
+            background-size: cover;
+            background-position: center center;
+        }
+
+        #r4 {
+            background: url('media/r-sunset.jpg');
+            background-size: cover;
+            background-position: center center;
         }
     </style>
 </head>
 
 <body>
-    <div class="one-of-those-damn-scroll-sites" id="me">
-        <!-- <img src="me.png" class="center-mass"> -->
+    <div class="one-of-those-damn-scroll-sites parallax-magic" id="me">
+            <!-- <h1>Hi!</h1>
+            <h2>I'm Sam and I like to build things.</h2>
+            <h3>I'm a Software Developer with 4.5 years of .Net experience.</h3>
+            <h4>I'm also obsessed with the current state of javascript, philosophy, window farming, ultralight backpacking, and spicy tonkotsu ramen.</h2>
+            <h5>This is a blog about how all those things are related.</h5> -->
     </div>
     <div class="one-of-those-damn-scroll-sites">
         <div class="center-mass">
             <div class="generic-loader"></div>
-            <div>Sorry about the mess!</div>
+            <div id="links">
+                <span class=""> Sorry about the mess! Please enjoy these articles I found on the interwebz while you wait...</span>
+                <a rel="noopener noreferrer" target="_blank" href="https://toggl.com/blog/world-created-programmer/">If the world was created by a software developer</a>
+                <a rel="noopener noreferrer" target="_blank" href="https://9gag.com/gag/anXEbe0/if-programming-languages-were-weapons">If programming lanugages were weapons</a>
+                <a rel="noopener noreferrer" target="_blank" href="https://www.newyorker.com/magazine/2015/12/14/existential-riddles">These existential riddles</a>
+                <a rel="noopener noreferrer" target="_blank" href="https://www.mcsweeneys.net/articles/lesser-known-trolley-problem-variations">These trolley car dilemmas</a>
+                <a rel="noopener noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/List_of_common_misconceptions#Physics">This list of common misconceptions</a>
+                <a rel="noopener noreferrer" target="_blank" href="https://www.boredpanda.com/sebastain-errazuriz-12-shoes-for-12-lovers/?utm_source=google&utm_medium=organic&utm_campaign=organic">This artist describing ex-lover's as shoes </a>
+                <a rel="noopener noreferrer" target="_blank" href="http://howdovaccinescauseautism.com/">This website detailing how vaccines cause autism...</a>
+            </div>
+
         </div>
     </div>
 
+    <div class="one-of-those-damn-scroll-sites parallax-magic" id="r1"></div>
     <div class="one-of-those-damn-scroll-sites">
-        <div class="center-mass" id="links">
-            <span class=""> Here's some pages on the interwebz that I enjoy</span>
-            <a rel="noopener noreferrer" target="_blank" href="https://toggl.com/blog/world-created-programmer/">This comic about "if the world was created by a software developer"</a>
-            <a rel="noopener noreferrer" target="_blank" href="https://9gag.com/gag/anXEbe0/if-programming-languages-were-weapons">This comic about "if programming lanugages were weapons"</a>
-            <a rel="noopener noreferrer" target="_blank" href="https://www.newyorker.com/magazine/2015/12/14/existential-riddles">These existential riddles</a>
-            <a rel="noopener noreferrer" target="_blank" href="https://www.mcsweeneys.net/articles/lesser-known-trolley-problem-variations">These trolley car dilemmas</a>
-            <a rel="noopener noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/List_of_common_misconceptions#Physics">This list of common misconceptions</a>
-            <a rel="noopener noreferrer" target="_blank" href="http://howdovaccinescauseautism.com/">This website about "how do vaccines cause autism?"</a>
-        </div>
+        <div class="center-mass"> That's my hiking partner Ronda btw... </div>
     </div>
-
+    <div class="one-of-those-damn-scroll-sites parallax-magic" id="r2"></div>
+    <div class="one-of-those-damn-scroll-sites">
+        <div class="center-mass"> We've been in all kinds of places and met all kinds of people</div>
+    </div>
+    <div class="one-of-those-damn-scroll-sites parallax-magic" id="r3"></div>
+    <div class="one-of-those-damn-scroll-sites">
+            <div class="center-mass"> RAWR </div>
+        </div>
+        <div class="one-of-those-damn-scroll-sites parallax-magic" id="r4"></div>
 </body>
 
 </html>
