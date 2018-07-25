@@ -11,6 +11,7 @@
         body {
             padding: 0;
             margin: 0;
+            font-size: 20px;
         }
 
         .one-of-those-damn-scroll-sites {
@@ -25,37 +26,6 @@
             position: relative;
             top: 50%;
             transform: translateY(-50%);
-            /* background-color: white; */
-        }
-
-        .generic-loader {
-            display: inline-block;
-            border: 16px solid #f3f3f3;
-            border-radius: 50%;
-            border-top: 16px solid black;
-            border-bottom: 16px solid black;
-            width: 120px;
-            height: 120px;
-            -webkit-animation: spin 2s linear infinite;
-            animation: spin 2s linear infinite;
-        }
-
-        @-webkit-keyframes spin {
-            0% {
-                -webkit-transform: rotate(0deg);
-            }
-            100% {
-                -webkit-transform: rotate(360deg);
-            }
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
         }
 
         #links {
@@ -71,45 +41,51 @@
 
         .parallax-magic {
             background-repeat: no-repeat;
-            background-position: center;
-            background-attachment: fixed;
+            /* background-position: center;
+            background-attachment: fixed; */
         }
 
         #me {
-            background: url('me.png');
+            background: url('media/me.png');
             background-repeat: no-repeat;
             background-position: center;
+            background-attachment: fixed;
             background-size: auto;
         }
 
         #r1 {
             background: url('media/r-asgard.jpg');
+            background-attachment: fixed;
             background-size: cover;
         }
 
         #r2 {
             background: url('media/r-cliffs-of-mohr.jpg');
+            background-attachment: fixed;
             background-size: cover;
             background-position: center center;
         }
 
         #r3 {
             background: url('media/r-valley-of-fire.jpg');
+            background-attachment: fixed;
             background-size: cover;
             background-position: center center;
         }
 
         #r4 {
             background: url('media/r-sunset.jpg');
+            background-attachment: fixed;
             background-size: cover;
             background-position: center center;
         }
     </style>
+    <link rel="stylesheet" href="critical.css">
 </head>
 
 <body>
     <div class="one-of-those-damn-scroll-sites parallax-magic" id="me">
-            <!-- <h1>Hi!</h1>
+        <!-- <h1>Hi!</h1>
             <h2>I'm Sam and I like to build things.</h2>
             <h3>I'm a Software Developer with 4.5 years of .Net experience.</h3>
             <h4>I'm also obsessed with the current state of javascript, philosophy, window farming, ultralight backpacking, and spicy tonkotsu ramen.</h2>
@@ -117,16 +93,16 @@
     </div>
     <div class="one-of-those-damn-scroll-sites">
         <div class="center-mass">
-            <div class="generic-loader"></div>
+            <div class="loader"></div>
             <div id="links">
-                <span class=""> Sorry about the mess! Please enjoy these articles I found on the interwebz while you wait...</span>
+                <span class=""> Sorry about the mess! Please enjoy my favorite interwebz articles while you wait.</span>
                 <a rel="noopener noreferrer" target="_blank" href="https://toggl.com/blog/world-created-programmer/">If the world was created by a software developer</a>
                 <a rel="noopener noreferrer" target="_blank" href="https://9gag.com/gag/anXEbe0/if-programming-languages-were-weapons">If programming lanugages were weapons</a>
-                <a rel="noopener noreferrer" target="_blank" href="https://www.newyorker.com/magazine/2015/12/14/existential-riddles">These existential riddles</a>
-                <a rel="noopener noreferrer" target="_blank" href="https://www.mcsweeneys.net/articles/lesser-known-trolley-problem-variations">These trolley car dilemmas</a>
-                <a rel="noopener noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/List_of_common_misconceptions#Physics">This list of common misconceptions</a>
+                <a rel="noopener noreferrer" target="_blank" href="https://www.newyorker.com/magazine/2015/12/14/existential-riddles"> Existential riddles</a>
+                <a rel="noopener noreferrer" target="_blank" href="https://www.mcsweeneys.net/articles/lesser-known-trolley-problem-variations">Lesser known trolley car dilemmas</a>
+                <a rel="noopener noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/List_of_common_misconceptions#Physics">Common misconceptions</a>
                 <a rel="noopener noreferrer" target="_blank" href="https://www.boredpanda.com/sebastain-errazuriz-12-shoes-for-12-lovers/?utm_source=google&utm_medium=organic&utm_campaign=organic">This artist describing ex-lover's as shoes </a>
-                <a rel="noopener noreferrer" target="_blank" href="https://www.pinterest.com/praseodymium/"> Our checkout my pinterest! </a>                
+                <a rel="noopener noreferrer" target="_blank" href="https://www.pinterest.com/praseodymium/"> Or checkout my pinterest! </a>
             </div>
 
         </div>
@@ -138,13 +114,13 @@
     </div>
     <div class="one-of-those-damn-scroll-sites parallax-magic" id="r2"></div>
     <div class="one-of-those-damn-scroll-sites">
-        <div class="center-mass"> We've been in all kinds of places and met all kinds of people</div>
+        <div class="center-mass"> We go all kinds of places</div>
     </div>
     <div class="one-of-those-damn-scroll-sites parallax-magic" id="r3"></div>
     <div class="one-of-those-damn-scroll-sites">
-            <div class="center-mass"> RAWR </div>
-        </div>
-        <div class="one-of-those-damn-scroll-sites parallax-magic" id="r4"></div>
+        <div class="center-mass"> RAWR </div>
+    </div>
+    <div class="one-of-those-damn-scroll-sites parallax-magic" id="r4"></div>
 </body>
 
 </html>
