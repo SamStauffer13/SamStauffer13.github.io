@@ -1,13 +1,3 @@
-// var config = {
-//     apiKey: "AIzaSyBrcrdy1hForWZnORzCXBX846AeJaQp-14",
-//     authDomain: "samstauffer-3fcaa.firebaseapp.com",
-//     databaseURL: "https://samstauffer-3fcaa.firebaseio.com/articles/oKzkhdNXC44CXkpil7qy.json",
-//     projectId: "samstauffer-3fcaa",
-//     storageBucket: "samstauffer-3fcaa.appspot.com",
-//     messagingSenderId: "610891925590"
-// };
-// firebase.initializeApp(config);
-
 new Vue({
     el: '#app',
     data() {
@@ -17,11 +7,10 @@ new Vue({
     },
     mounted() {
         axios
-            .get('https://samstauffer-3fcaa.firebaseio.com/articles.json?auth=N2rIqCkw3ovAmgsfrxWnSh8pCqUlEH141y6uGP5q')
+            .get('https://samstauffer-3fcaa.firebaseio.com/blog.json')
             .then(response => (this.info = response))
     }
 })
-
 
 // To use this code on your website, get a free API key from Google. Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 function myMap() {
@@ -48,12 +37,14 @@ function onClick(element) {
 }
 
 // Change style of navbar on scroll
-window.onscroll = function () { myFunction() };
-function myFunction() {
+window.onscroll = () => {
     var navbar = document.getElementById("myNavbar");
     if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+
         navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
+
     } else {
+
         navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
     }
 }
