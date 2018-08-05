@@ -1,56 +1,81 @@
-new Vue({
-    el: '#app',
+// https://vuejs.org/v2/guide/single-file-components.html
+
+Vue.component('projects', {
     data() {
         return {
-            info: null
+            message: "Here's what I've been up to lately",
+            projects: []
+        }
+    },
+    computed: {
+        isLoading() {
+            return false; // return this.project === undefined || this.projects.length === 0;
         }
     },
     mounted() {
         axios
-            .get('https://samstauffer-3fcaa.firebaseio.com/blog.json')
-            .then(response => (this.info = response))
-    }
+            .get('https://samstauffer-3fcaa.firebaseio.com/projects.json')
+            .then(response => this.projects = response.data)
+            .catch(error => {
+                console.error(error);
+                this.message = 'This section is currently under maintenance'
+            })
+    },
+    methods: {
+        hover: (project) => this.message = project.desc,
+        enhance: (project) => {
+
+            // var playa = document.getElementById("vidPreviewer");
+
+            // playa.querySelector("source").src = project.url;
+
+            // if (playa.requestFullscreen) playa.requestFullscreen();
+
+            // else if (playa.msRequestFullscreen) playa.msRequestFullscreen();
+
+            // else if (playa.mozRequestFullScreen) playa.mozRequestFullScreen();
+
+            // else if (playa.webkitRequestFullscreen) playa.webkitRequestFullscreen();
+
+            // document.getElementById("previewer").style.display = "block";
+        }
+    },
+    template: `
+    <div class="w3-content w3-container w3-padding-64" id="projects">        
+        <h3 class="w3-center">Projects and Travels</h3>
+        <p class="w3-center">
+            <em>{{message}}</em>
+        </p>
+        <br>        
+        <div v-show="isLoading"> Loading Content </div>
+        <div v-show="isLoading === false" class="w3-row-padding w3-center w3-section">
+            <div class="w3-col m3" v-for="project in projects">
+                <img :src="project.img" style="width:200px;" @mouseover="hover(project)"  @click="enhance(project)" class="w3-hover-opacity" :alt="project.desc">                
+            </div>
+        </div>
+        <div id="previewer" class="w3-modal w3-black" onclick="this.style.display='none'">
+            <video controls id="vidPreviewer">
+                <source src="media/flame-thrower.mp4" type="video/mp4">
+            </video>
+        </div>        
+    </div>
+    `,
 })
 
-// To use this code on your website, get a free API key from Google. Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
-function myMap() {
-    // myCenter = new google.maps.LatLng(41.878114, -87.629798);
-    // var mapOptions = {
-    //     center: myCenter,
-    //     zoom: 12, scrollwheel: false, draggable: false,
-    //     mapTypeId: google.maps.MapTypeId.ROADMAP
-    // };
-    // var map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
+var V = new Vue({el: '#app'});
 
-    // var marker = new google.maps.Marker({
-    //     position: myCenter,
-    // });
-    // marker.setMap(map);
-}
-
-// Modal Image Gallery
-function onClick(element) {
-    document.getElementById("img01").src = element.src;
-    document.getElementById("modal01").style.display = "block";
-    var captionText = document.getElementById("caption");
-    captionText.innerHTML = element.alt;
-}
-
-// Change style of navbar on scroll
+// todo, create navbar component 
+const scrollStyles = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
 window.onscroll = () => {
-    var navbar = document.getElementById("myNavbar");
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
 
-        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
+    let navbar = document.getElementById("myNavbar");
 
-    } else {
+    const isScrolling = document.body.scrollTop > 100 || document.documentElement.scrollTop > 100;
 
-        navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
-    }
+    navbar.className = isScrolling ? scrollStyles : navbar.className.replace(scrollStyles, '');
 }
+function toggleMenuOnMobile() {
 
-// Used to toggle the menu on small screens when clicking on the menu button
-function toggleFunction() {
     var x = document.getElementById("navDemo");
     if (x.className.indexOf("w3-show") == -1) {
         x.className += " w3-show";

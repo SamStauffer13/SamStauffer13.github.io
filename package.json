@@ -1,0 +1,19 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamStauffer13/SamStauffer13.github.io.git"
+  },
+  "author": "sam stauffer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SamStauffer13/SamStauffer13.github.io/issues"
+  },
+  "homepage": "https://github.com/SamStauffer13/SamStauffer13.github.io#readme"
+}
