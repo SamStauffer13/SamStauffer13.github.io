@@ -38,7 +38,7 @@
     /* First image (Logo. Full height) */
 
     .bgimg-1 {
-        background-image: url('media/me.png');
+        background-image: url('src/assets/me.png');
         background-repeat: no-repeat;
         background-position: center;
         background-attachment: fixed;
@@ -49,14 +49,14 @@
     /* Second image (Portfolio) */
 
     .bgimg-2 {
-        background-image: url("media/narrows-canyon.jpg");
+        background-image: url("src/assets/narrows-canyon.jpg");
         min-height: 400px;
     }
 
     /* Third image (Contact) */
 
     .bgimg-3 {
-        background-image: url("media/narrows-spring.jpg");
+        background-image: url("src/assets/narrows-spring.jpg");
         min-height: 400px;
     }
 
@@ -139,7 +139,7 @@
                         <i class="fa fa-user w3-margin-right"></i>Sam Stauffer</b>
                 </p>
                 <br>
-                <img src="media/kitay.jpg" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Me" width="500" height="333">
+                <img src="src/assets/kitay.jpg" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Me" width="500" height="333">
             </div>
 
             <!-- Hide this text on small devices -->
@@ -198,7 +198,6 @@
     </div>
 
     <div id="app">
-        <!-- <projects></projects> -->
         <div class="w3-content w3-container w3-padding-64" id="projects">
             <h3 class="w3-center">Projects and Travels</h3>
             <p class="w3-center">
@@ -207,11 +206,12 @@
             <br>
             <div class="w3-row-padding w3-center w3-section">
                 <video width="100%" controls id="vidPreviewer">
-                    <source src="media/flame-thrower.mp4" type="video/mp4">
+                    <source src="/src/assets/flame-thrower.mp4" type="video/mp4">
                 </video>
             </div>
         </div>
     </div>
+
     <!-- Third Parallax Image with Portfolio Text -->
     <div class="bgimg-3 w3-display-container w3-opacity-min">
         <div class="w3-display-middle">
@@ -259,15 +259,7 @@
         </p>
 
     </footer>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
-    <!-- <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-database.js"></script> -->
-
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="app.js"></script>
+    <script src="/dist/build.js"></script>
 </body>
 
 </html>
