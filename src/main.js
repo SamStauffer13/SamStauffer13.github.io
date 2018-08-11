@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-
+import Elevator from 'elevator.js'
 new Vue({
   el: '#app',
   render: h => h(App)
@@ -24,3 +24,8 @@ function toggleMenuOnMobile() {
         x.className = x.className.replace(" w3-show", "");
     }
 }
+
+var elevator = new Elevator({
+    element: document.querySelector('#elevator'),
+    duration: 3000 // milliseconds
+  });

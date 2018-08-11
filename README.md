@@ -23,7 +23,7 @@ Ode to Front-End Optimization
 3. Below the fold content should be loaded async after page.load 
 5. Give large images a background gradient with colors representational of the final image (better user experience than a white box)
 6. Give users a 'pleasant distraction' instead of a spinner (ex quickly load a partial demoing how to use a feature)
-
+https://medium.com/@addyosmani/the-cost-of-javascript-in-2018-7d8950fbb5d4
 LiveServer + GlassIt Vscode extensions = single monitor programming bliss
 
 Open tasks:
