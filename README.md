@@ -31,6 +31,5 @@ Open tasks:
 2. Progress on Projects component:
     1. On hover of image updates text under projects and show date of project on image div
     2. On click of image pushes image/video to blog header div and if video will autoplay it...
-    3. Show/Hide loader element based of length of projects array 
 5. Create Footer component (use elevator.js)
 6. Create Navigation component 
