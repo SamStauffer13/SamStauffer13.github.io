@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="w3-content w3-container w3-padding-64" id="projects">        
-        <h3 class="w3-center">Latest Projects</h3>
+        <h3 class="w3-center">Latest Builds and Adventures</h3>
         <p class="w3-center">
             <em>{{message}}</em>
         </p>        
@@ -26,7 +26,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      message: "Sorry, looks like your connection is slow, give it a second...",
+      message: "Looks like your connection is slow, give it a second...",
       projects: []
     };
   },
@@ -47,9 +47,8 @@ export default {
         this.projects = response.data;
       })
       .catch(error => {
-        console.error(error);
         this.message =
-          "Sorry! This section is currently under maintenance (0_0)";
+          "Sorry! Looks like this section is currently under maintenance (0_0)";
       });
   },
   methods: {
@@ -57,7 +56,6 @@ export default {
       // this.message = project.desc;
     },
     enhance: project => {
-      console.log(this.message);
       // this.message = project.desc;
     }
   }
@@ -68,6 +66,10 @@ export default {
 .bgimg-2 {
   background-image: url("../assets/narrows-canyon.jpg");
   min-height: 400px;
+}
+
+.w3-hover-opacity {
+  cursor: pointer;
 }
 
 .loader,
