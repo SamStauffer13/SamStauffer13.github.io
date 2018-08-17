@@ -42,21 +42,22 @@ import { Harbinger } from "../harbinger.js";
 export default {
   data() {
     return {
-        blastoff: false
+      shouldSpin: false
     };
   },
   computed: {
-      stylez(){
-          return{
-              'spin' : this.blastoff === true
-          }
-      }
+    stylez() {
+      return {
+        spin: this.shouldSpin === true
+      };
+    }
   },
   mounted() {
-    Harbinger.$on("blastoff", () => {
-
-      this.blastoff = true;
-
+    Harbinger.$on("started-from-the-bottom", () => {
+      this.shouldSpin = true;
+    });
+    Harbinger.$on("now-we-here", () => {
+      this.shouldSpin = false;
     });
   }
 };

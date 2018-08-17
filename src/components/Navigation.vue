@@ -12,6 +12,8 @@
             <i class="fa fa-th"></i> POSTS</a>
         <a href="#links" class="w3-bar-item w3-button w3-hide-small">
             <i class="fa fa-envelope"></i> ARTICLES</a>
+                    <a href="#footer" class="w3-bar-item w3-button w3-hide-small">
+            <i class="fa fa-envelope"></i> SOCIAL MEDIA</a>
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
             <i class="fa fa-search"></i>
         </a>
@@ -36,7 +38,10 @@ export default {
   },
   computed: {
     isScrolling() {
-        return document.body.scrollTop > 100 || document.documentElement.scrollTop > 100;
+      return (
+        document.body.scrollTop > 100 ||
+        document.documentElement.scrollTop > 100
+      );
     }
   }
 };
