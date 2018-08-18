@@ -1,6 +1,7 @@
 <template>
 <footer id="footer" class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
-  <a @mouseover="display({name:'Click ^ with sound on', link:'#'})" @mouseleave="display({name:'Hit me up me on social media', link:'#'})" class="w3-button" @click="elevator.elevate()">
+
+  <a class="w3-hover-opacity" @click="elevator.elevate()">
       <img src="src/assets/icons/rocket.png">
   </a>
   <div class="w3-xlarge w3-section">

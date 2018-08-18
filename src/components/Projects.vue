@@ -11,12 +11,26 @@
             <em>{{message}}</em>
         </p>        
         <br>
-        <div v-show="isLoading === true" class="loader">Loading...</div>        
-        <div v-show="isLoading === false"  class="w3-row-padding w3-center w3-section">
-            <div class="w3-col m3" v-for="project in projects" :key="project.date" style="padding-bottom: 25px;">
-                <img :src="project.img" style="width:200px;border-radius:50%" @mouseover="hover(project)"  @click="enhance(project)" class="w3-hover-opacity" :alt="project.desc">                
-            </div>
-        </div>
+        
+        <!-- <transition name="fade"> -->
+          <div class="w3-center" v-show="isLoading === true"> 
+            <svg class="loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340">
+              <circle cx="170" cy="170" r="160" stroke="#83928a"/>
+              <circle cx="170" cy="170" r="135" stroke="#404041"/>
+              <circle cx="170" cy="170" r="110" stroke="#83928a"/>
+              <circle cx="170" cy="170" r="85" stroke="#404041"/>
+            </svg>          
+          </div>
+        <!-- </transition> -->
+        
+        <transition name="fade">
+          <div class="w3-row-padding w3-center w3-section" v-show="isLoading === false">
+              <div class="w3-col m3" v-for="project in projects" :key="project.date" style="padding-bottom: 25px;">
+                  <img :src="project.img" style="width:200px;border-radius:50%" @mouseover="hover(project)"  @click="enhance(project)" class="w3-hover-opacity" :alt="project.desc">                
+              </div>
+          </div>
+        </transition>
+
     </div>
 </div>
 </template>
@@ -43,8 +57,10 @@ export default {
     axios
       .get("https://samstauffer-3fcaa.firebaseio.com/projects.json")
       .then(response => {
-        this.message = `Here's what i've been up to in ${this.currentMonth}`;
-        this.projects = response.data;
+        setTimeout(() => {
+          this.message = `Here's what i've been up to in ${this.currentMonth}`;
+          this.projects = response.data;
+        }, 6000);
       })
       .catch(error => {
         this.message =
@@ -62,71 +78,71 @@ export default {
 };
 </script>
 
-<style>
+<style <style lang="scss">
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 2s;
+}
+.fade-enter, .fade-leave-to{
+  opacity: 0;
+}
+
 .bgimg-2 {
   background-image: url("../assets/narrows-canyon.jpg");
   min-height: 400px;
+  // filter: grayscale(100%);
 }
 
 .w3-hover-opacity {
   cursor: pointer;
 }
+.container {
+  align-items: center;
+}
 
-.loader,
-.loader:before,
-.loader:after {
-  border-radius: 50%;
-  width: 2.5em;
-  height: 2.5em;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-  -webkit-animation: load7 1.8s infinite ease-in-out;
-  animation: load7 1.8s infinite ease-in-out;
-}
 .loader {
-  color: #777;
-  font-size: 10px;
-  margin: 80px auto;
-  position: relative;
-  text-indent: -9999em;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-animation-delay: -0.16s;
-  animation-delay: -0.16s;
+  max-width: 15rem;
+  width: 100%;
+  height: auto;
+  stroke-linecap: round;
 }
-.loader:before,
-.loader:after {
-  content: "";
-  position: absolute;
-  top: 0;
-}
-.loader:before {
-  left: -3.5em;
-  -webkit-animation-delay: -0.32s;
-  animation-delay: -0.32s;
-}
-.loader:after {
-  left: 3.5em;
-}
-@-webkit-keyframes load7 {
-  0%,
-  80%,
-  100% {
-    box-shadow: 0 2.5em 0 -1.3em;
+
+circle {
+  fill: none;
+  stroke-width: 3.5;
+  animation-name: preloader;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  transform-origin: 170px 170px;
+  will-change: transform;
+
+  &:nth-of-type(1) {
+    stroke-dasharray: 550px;
   }
-  40% {
-    box-shadow: 0 2.5em 0 0;
+
+  &:nth-of-type(2) {
+    stroke-dasharray: 500px;
+  }
+
+  &:nth-of-type(3) {
+    stroke-dasharray: 450px;
+  }
+
+  &:nth-of-type(4) {
+    stroke-dasharray: 300px;
+  }
+
+  @for $i from 1 through 4 {
+    &:nth-of-type(#{$i}) {
+      animation-delay: -#{$i * 0.15}s;
+    }
   }
 }
-@keyframes load7 {
-  0%,
-  80%,
-  100% {
-    box-shadow: 0 2.5em 0 -1.3em;
-  }
-  40% {
-    box-shadow: 0 2.5em 0 0;
+
+@keyframes preloader {
+  50% {
+    transform: rotate(360deg);
   }
 }
 </style>
