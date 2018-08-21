@@ -12,6 +12,8 @@
         </p>                  
 
         <div class="w3-section w3-center">
+            <a rel="noopener noreferrer" target="_blank" href="https://medium.com/@amberleyjohanna/seriously-though-what-is-a-progressive-web-app-56130600a093">Seriously thought, what is a PWA?</a>
+            <br>
             <a rel="noopener noreferrer" target="_blank" href="https://medium.com/@addyosmani/the-cost-of-javascript-in-2018-7d8950fbb5d4/">The cost of javascript in 2018</a>
             <br>
             <a rel="noopener noreferrer" target="_blank" href="https://css-tricks.com/browser-painting-and-considerations-for-web-performance/">Browser painting and considerations for web performance</a>
