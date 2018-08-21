@@ -25,11 +25,32 @@
         
         <transition name="fade">
           <div class="w3-row-padding w3-center w3-section" v-show="isLoading === false">
-              <div class="w3-col m3" v-for="project in projects" :key="project.date" style="padding-bottom: 25px;">
-                  <img :src="project.img" style="width:200px;border-radius:50%" @mouseover="hover(project)"  @click="enhance(project)" class="w3-hover-opacity" :alt="project.desc">                
+              <div class="w3-col m3" v-for="project in projects" :key="project.date" style="padding-bottom: 25px;">                  
+                <div class="row">
+                  <div class="col-sm-6">     
+                    <div class="ih-item circle effect13 from_left_and_right">
+                      <a href="#player" @click="select(project)">
+                        <div class="img"><img :src="project.img" :alt="project.desc"></div>
+                        <div class="info">
+                          <div class="info-back">
+                            <h3>{{project.desc}}</h3>
+                            <p>{{project.date}}</p>
+                          </div>
+                        </div>
+                      </a>
+                    </div>            
+                  </div>
+                </div>
               </div>
           </div>
-        </transition>
+        </transition>      
+
+        <div v-show="show" >        
+        <video width="320" height="240" controls id="player">
+          <source :src="src" type="video/mp4">
+           Your browser does not support the video tag.
+        </video>
+        </div>
 
     </div>
 </div>
@@ -41,7 +62,9 @@ export default {
   data() {
     return {
       message: "Looks like your connection is slow, give it a second...",
-      projects: []
+      projects: [],
+      src: "",
+      show: false
     };
   },
   computed: {
@@ -68,22 +91,31 @@ export default {
       });
   },
   methods: {
-    hover: project => {
-      // this.message = project.desc;
-    },
-    enhance: project => {
-      // this.message = project.desc;
+    select: function(project) {
+      this.src = project.url;
+      this.show = true;
+      const player = document.getElementById("player");
+      player.load();
+      if (player.requestFullscreen) player.requestFullscreen();
+      else if (player.mozRequestFullScreen) player.mozRequestFullScreen();
+      else if (player.webkitRequestFullscreen) player.webkitRequestFullscreen();
+      else if (player.msRequestFullscreen) player.msRequestFullscreen();
+
+      document.addEventListener("fullscreenchange", () => {
+        // if (document.fullscreenElement !== null) alert();
+      });
     }
   }
 };
 </script>
 
 <style <style lang="scss">
-
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 2s;
 }
-.fade-enter, .fade-leave-to{
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 
