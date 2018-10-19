@@ -102,8 +102,11 @@
 </template>
 
 <script>
-export default { 
-    
-    // todo, animate this
-}
+export default {
+  mounted() {
+    var devtools = /./;
+    devtools.toString = () => this.inspecting = true;
+    console.log("%c", devtools);
+  }
+};
 </script>

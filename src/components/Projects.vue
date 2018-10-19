@@ -12,7 +12,6 @@
         </p>        
         <br>
         
-        <!-- <transition name="fade"> -->
           <div class="w3-center" v-show="isLoading === true"> 
             <svg class="loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340">
               <circle cx="170" cy="170" r="160" stroke="#83928a"/>
@@ -21,12 +20,11 @@
               <circle cx="170" cy="170" r="85" stroke="#404041"/>
             </svg>          
           </div>
-        <!-- </transition> -->
         
         <transition name="fade">
           <div class="w3-row-padding w3-center w3-section" v-show="isLoading === false">
               <div class="w3-col m3" v-for="project in projects" :key="project.date" style="padding-bottom: 25px;">                  
-                <div class="row">
+                <div class="row" :id="project.date">
                   <div class="col-sm-6">     
                     <div class="ih-item circle effect13 from_left_and_right">
                       <a href="#player" @click="select(project)">
@@ -80,31 +78,15 @@ export default {
     axios
       .get("https://samstauffer-3fcaa.firebaseio.com/projects.json")
       .then(response => {
-        setTimeout(() => {
-          this.message = `Here's what i've been up to in ${this.currentMonth}`;
-          this.projects = response.data;
-        }, 6000);
+        this.message = `Here's what i've been up to in ${this.currentMonth}`;
+        this.projects = response.data;
       })
       .catch(error => {
-        this.message =
-          "Sorry! Looks like this section is currently under maintenance (0_0)";
+        this.message = "Sorry! Looks like this section is currently under maintenance (0_0)";
       });
   },
   methods: {
-    select: function(project) {
-      this.src = project.url;
-      this.show = true;
-      const player = document.getElementById("player");
-      player.load();
-      if (player.requestFullscreen) player.requestFullscreen();
-      else if (player.mozRequestFullScreen) player.mozRequestFullScreen();
-      else if (player.webkitRequestFullscreen) player.webkitRequestFullscreen();
-      else if (player.msRequestFullscreen) player.msRequestFullscreen();
-
-      document.addEventListener("fullscreenchange", () => {
-        // if (document.fullscreenElement !== null) alert();
-      });
-    }
+    select: function(project) {}
   }
 };
 </script>
