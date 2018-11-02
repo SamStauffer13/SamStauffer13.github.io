@@ -1,0 +1,16 @@
+{
+  "projects": [
+    {
+      "date": "July 1st 2018",
+      "desc": "Built a flamethrower",
+      "img": "../../src/assets/icons/flame-thrower.png",
+      "url": "../../src/assets/flame-thrower.mp4"
+    },
+    {
+      "date": "July 8th 2018",
+      "desc": "Hiked the Narrows",
+      "img": "src/assets/icons/narrows-hike.png",
+      "url": "src/assets/narrows-hike.mp4"
+    }
+  ]
+}

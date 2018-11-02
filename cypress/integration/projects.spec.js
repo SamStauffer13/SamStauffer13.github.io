@@ -1,78 +1,105 @@
 /// <reference types="Cypress" />
 
-context('Projects', () => {
+context('projects section', () => {
 
-    // node_modules\.bin\cypress open
+    // https://github.com/cypress-io/cypress-example-kitchensink/blob/master/package.json    
 
-    it('should load most recent projects', () => {
+    describe('when calling the actual server', () => {
 
-        // cy.server()
-
-        // cy.route('/projects.json', []).as('fetch_projects')
-
-        // cy.visit('http://samstauffer.net')
-
-        // cy.wait('@fetch_projects')
-
-        // cy.get('.info-back').its('length').should('be', 2)
-    })
-
-    describe('http response scenarios', () => {
-
-        const act = (mockedHttpRequest) => {
+        it('should display most recent projects', () => {
 
             cy.server()
 
-            cy.route(mockedHttpRequest).as('fetch_projects')
+            cy.route('/projects.json').as('fetch_projects')
 
-            cy.visit('http://samstauffer.net')
+            cy.visit('/')
 
             cy.wait('@fetch_projects')
-        }
 
-        it('loading icon should display when fetching projects', () => {
+            cy.get('#projects').scrollIntoView()
 
-            act({
+            cy.get('.info-back').its('length').should('be', 2)
+        })
+    });
+
+    const setup = (mockedHttpRequest) => {
+
+        cy.server()
+
+        cy.route(mockedHttpRequest).as('fetch_projects')
+
+        cy.visit('/')
+
+        cy.get('#projects').scrollIntoView(); // call cy.wait('@fetch_projects') to execute this in your test       
+    }
+
+    describe('when server returns a mocked 200 http response', () => {
+
+        beforeEach(() => {
+
+            const stubbedResponse = cy.fixture('projects.json');
+
+            setup({
                 method: 'GET',
                 url: '/projects.json',
                 status: 200,
-                response: { projects: [] },
-                delay: 500
+                response: stubbedResponse,
+                delay: 100
             })
+        })
+
+        it('should display loading icon while loading', () => {
 
             cy.get('.loader').should('be.visible')
         })
 
-        it('should order projects by their date of publish', () => {
+        it('should display loading message while loading', () => {
 
+            cy.get('#projects_message').contains('Looks like your connection is slow, give it a second...')
         })
 
-        it('project should display special video player when clicked', () => {
+        it('should display a welcome message', () => {
 
+            cy.wait('@fetch_projects')
+
+            cy.get('#projects_message').contains('Here\'s what i\'ve been up to in')
         })
 
-        it('error message should display when fetching projects fails', () => {
+        it('should display projects', () => {
 
-            act({
+            cy.wait('@fetch_projects')
+
+            cy.get('.info-back').its('length').should('be', 2)
+        })
+    })
+
+    describe('when server returns a mocked 500 http response', () => {
+
+        beforeEach(() => {
+
+            const stubbedResponse = cy.fixture('projects.json');
+
+            setup({
                 method: 'GET',
                 url: '/projects.json',
-                status: 404,
-                response: { error: '' },
+                status: 500,
+                response: stubbedResponse,
+                delay: 10
             })
-
-            cy.get('#projects_message').contains('Sorry! Looks like this section is currently under maintenance (0_0)');
         })
 
-        it('loading icon should no longer display when fetching projects fails', () => {
+        it('should display error message', () => {
 
-            act({
-                method: 'GET',
-                url: '/projects.json',
-                status: 404,
-                response: { error: '' },
-            })
+            cy.wait('@fetch_projects')
 
-            cy.get('.loader').should('not.be.visible')
+            cy.get('#projects_message').contains('Sorry! Looks like this section is currently under maintenance (0_0)')
+        })
+
+        it('should display loading icon', () => {
+
+            cy.wait('@fetch_projects')
+
+            cy.get('.loader').should('be.visible')
         })
     })
 })

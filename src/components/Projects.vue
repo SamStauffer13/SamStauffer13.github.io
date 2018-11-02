@@ -7,7 +7,7 @@
     </div>
     <div class="w3-content w3-container w3-padding-64" id="projects">        
         <h3 class="w3-center">Latest Builds and Adventures</h3>
-        <p class="w3-center">
+        <p class="w3-center" id="projects_message">
             <em>{{message}}</em>
         </p>        
         <br>
@@ -24,7 +24,7 @@
         <transition name="fade">
           <div class="w3-row-padding w3-center w3-section" v-show="isLoading === false">
               <div class="w3-col m3" v-for="project in projects" :key="project.date" style="padding-bottom: 25px;">                  
-                <div class="row" :id="project.date">
+                <div class="row">
                   <div class="col-sm-6">     
                     <div class="ih-item circle effect13 from_left_and_right">
                       <a href="#player" @click="select(project)">
